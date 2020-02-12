@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model RS1_Ispit_asp.net_core.ModelViews.AjaxIndexVM
+
+<h2>Eldin metno ajax, jer zna da metne</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Ucenik</td>
+            <td>Prosjek Ocjena</td>
+            <td>Pristupio Ispitu</td>
+            <td>Rezultat maturskog</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var Row in Model.Rows)
+        {
+        <tr>
+            <td>@Row.ImeUcenika</td>
+            <td>@Row.prosjekOcjena</td>
+            @if (Row.pristupioIspitu)
+            {
+                <td>
+                    <button class="btn btn-success" ajax-poziv="da" ajax-rezultat="divAjax" ajax-url="/Ajax/Odsutan?IspitStavkaId=@Row.ispitStavkaID">Da</button>
+                </td>
+                <td>
+                    @Row.Rezultati
+                </td>
+                <td>
+                    <button class="btn btn-info" ajax-poziv="da" ajax-rezultat="divAjax" ajax-url="/Ajax/Uredi?IspitStavkaId=@Row.ispitStavkaID">Uredi</button>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <button class="btn btn-danger" ajax-poziv="da" ajax-rezultat="divAjax" ajax-url="/Ajax/Prisutan?IspitStavkaId=@Row.ispitStavkaID">Ne</button>
+                </td>
+                <td>x</td>
+                <td></td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>

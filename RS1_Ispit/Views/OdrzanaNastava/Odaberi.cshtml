@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Odaberi";
+}
+@using RS1_Ispit_asp.net_core.ModelViews
+@model OdrzanaNastavaOdaberiVM
+
+<h2>Odaberi</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Datum</td>
+            <td>Skola</td>
+            <td>Predmet</td>
+            <td>Nisu pristupili ucenici</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Row in Model.row)
+        {
+            <tr>
+                <td>
+                    @Row.Datum
+                </td>
+                <td>@Row.skola</td>
+                <td>@Row.predmet</td>
+                <td>
+                    @foreach (var odsutni in Row.Odsutni)
+                    {
+                        <span>@odsutni</span>
+                    }
+                </td>
+                <td>
+                    <a href="/OdrzanaNastava/Uredi?ispitId=@Row.ispitID" class="btn btn-info">Uredi</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<a href="/OdrzanaNastava/Dodaj?nastavnikID=@Model.NastavnikID" class="btn btn-default">Dodaj</a>

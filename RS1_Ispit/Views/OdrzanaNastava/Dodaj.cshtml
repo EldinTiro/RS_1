@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Dodaj";
+}
+@using RS1_Ispit_asp.net_core.ModelViews
+@model OdrzanaNastavaDodajVM
+
+
+<h2>Dodavanje maturskog ispita</h2>
+
+<form asp-action="Snimi" method="post">
+    <div class="form-group">
+        <label>Skola</label>
+        <select asp-for="SkolaId" asp-items="@Model.skola" class="form-control"></select>
+    </div>
+
+    <div>
+        <label>Nastavnik</label>
+        <input asp-for="ImePrezime" readonly class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Skolska godina</label>
+        <input asp-for="skolskaGodina" readonly class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Datum ispita</label>
+        <input asp-for="datumIspit"  class="form-control" type="date"/>
+    </div>
+
+    <div class="form-group">
+        <label>Predmet</label>
+        <select asp-for="PredmetId" asp-items="@Model.predmet" class="form-control"></select>
+    </div>
+    
+    <input type="hidden" asp-for="nastavnikID" readonly />
+
+    <input type="submit" value="Snimi" class="btn btn-success" />
+</form>

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Uredi";
+}
+@model RS1_Ispit_asp.net_core.ModelViews.OdrzanaNastavaUrediVM
+
+<h2>Uređivanje maturskog ispita</h2>
+
+<form asp-action="SnimiDodaj" method="post">
+    <div class="form-group">
+        <label>Datum </label>
+        <input asp-for="Datum" readonly class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Predmet: </label>
+        <input asp-for="Predmet" readonly class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Napomena </label>
+        <input asp-for="Napomena" class="form-control" />
+    </div>
+
+    <input type="hidden" asp-for="IspitId" readonly />
+
+    <input type="submit" value="Snimi" class="btn btn-success" />
+</form>
+<br />
+<div id="divAjax" style="border:solid 2px black">
+    <a ajax-poziv ="da" ajax-rezultat="divAjax" href="/Ajax/Index?IspitId=@Model.IspitId" >Klik za stavke</a>
+</div>
+
+<script>
+    $(document).ready(
+        function () {
+            $.get("/Ajax/Index?IspitId=@Model.IspitId", function (r) {
+                $("#divAjax").html(r)
+            });
+        }
+        <
+    );
+</script>

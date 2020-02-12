@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Uredi";
+}
+
+@model RS1_Ispit_asp.net_core.ModelViews.AjaxUrediVM
+
+<h2>Uredi</h2>
+
+<form asp-action="Snimi" method="post">
+    <div class="form-group">
+        <label>Ucenik</label>
+        <input asp-for="imePrezime" readonly class="form-control" />
+    </div>
+    <div>
+        <label>Bodovi</label>
+        <input asp-for="bodovi" class="form-control" />
+    </div>
+
+    <input asp-for="ispitStavkaID" hidden />
+    <br />
+    <button type="submit" value="Snimi" asp-action="Snimi" class="btn btn-success">Snimi</button>
+
+</form>
+
+
+

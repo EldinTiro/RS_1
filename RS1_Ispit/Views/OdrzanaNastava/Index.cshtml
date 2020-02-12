@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@using RS1_Ispit_asp.net_core.ModelViews
+@model OdrzanaNastavaIndexVM
+
+<h2>Index</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Skola</td>
+            <td>Ime i prezime nastavnika</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Row in Model.rows)
+        {
+            <tr>
+
+                <td>
+                    @foreach (var Skola in Row.skola)
+                    {
+                        <span>@Skola,</span>
+                    }
+                </td>
+                <td>@Row.ImePrezime</td>
+                <td>
+                    <a href="/OdrzanaNastava/Odaberi?NastavnikId=@Row.nastavnikID" class="btn btn-info">Odaberi</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+    </table>
